@@ -74,7 +74,7 @@ static int hello_file_release(struct inode *inode, struct file *file)
 	return (0);
 }
 
-static int hello_file_init(void)
+static __init int hello_file_init(void)
 {
 	major = register_chrdev(0, module_name, &fops);
 	if (major == -EINVAL)
@@ -92,7 +92,7 @@ static int hello_file_init(void)
 	return (0);
 }
 
-static void hello_file_exit(void)
+static __exit void hello_file_exit(void)
 {
 	unregister_chrdev(major, module_name);
 	printk(KERN_INFO "%s is closed\n", module_name);
