@@ -9,13 +9,11 @@ This file always loop over the same content: `Hello, file!\n`.
 ```sh
 $ make
 $ insmod hello_file.ko
-$ export HELLO_FILE_MAJOR_NUMBER=`cat /proc/devices | grep "hello-file" | cut -f 1 -d " "`
-$ mknod /dev/hello-file c ${HELLO_FILE_MAJOR_NUMBER} 0
-$ cat /dev/hello-file # Enjoy!
+$ cat /dev/hello_file_dev
 ```
 
 ## How to uninstall
+
 ```sh
-$ rm /dev/hello-file
 $ rmmod hello_file
 ```
